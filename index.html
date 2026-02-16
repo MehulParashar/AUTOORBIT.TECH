@@ -1,89 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <script>
-    document.addEventListener('DOMContentLoaded', function(){
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-          e.preventDefault();
-          const target = document.querySelector(this.getAttribute('href'));
-          if(target){ target.scrollIntoView({ behavior: 'smooth' }); }
-        });
-      });
-    });
-  </script>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NexFlow.tech | AI Automation Agency</title>
-  <meta name="description" content="NexFlow.tech provides professional AI Automation services for businesses. Pricing starts from ₹10,000+." />
-  <style>
-    body { margin:0; font-family: Arial, sans-serif; background:#0f172a; color:#e5e7eb; line-height:1.6; }
-    header { background:#020617; padding:70px 20px; text-align:center; }
-    header h1 { font-size:42px; margin-bottom:10px; }
-    header p { max-width:800px; margin:auto; }
-    section { padding:70px 20px; }
-    .container { max-width:1100px; margin:auto; }
-    h2 { text-align:center; margin-bottom:20px; }
-    .services { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:25px; }
-    .card { background:#020617; padding:30px; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.4); }
-    .price { font-size:20px; font-weight:bold; margin-top:10px; color:#38bdf8; }
-    .btn { display:inline-block; margin-top:20px; padding:14px 32px; background:#38bdf8; color:#020617; border-radius:30px; text-decoration:none; font-weight:bold; }
-    .btn-outline { background:transparent; color:#38bdf8; border:2px solid #38bdf8; margin-left:10px; }
-    footer { background:#020617; padding:30px 20px; text-align:center; font-size:14px; }
-    .contact { text-align:center; }
-    .floating-whatsapp { position:fixed; bottom:20px; right:20px; background:#25D366; color:#fff; padding:14px 18px; border-radius:50px; text-decoration:none; font-weight:bold; z-index:999; }
-  </style>
-</head>
-<body>
-
-<header>
-  <h1>NexFlow.tech</h1>
-  <p>Professional AI Automation Agency helping businesses scale, save time, and never miss a lead.</p>
-  <div style="margin-top:25px;">
-    <a href="#services" class="btn">View Services</a>
-    <a href="https://wa.me/919416693052" class="btn btn-outline">WhatsApp Us</a>
-    <a href="mailto:team.nexflow.tech@gmail.com" class="btn btn-outline">Email Us</a>
-  </div>
-</header>
-
-<section id="about">
-  <div class="container">
-    <h2>Why NexFlow.tech?</h2>
-    <p style="text-align:center; max-width:900px; margin:auto;">
-      We don’t just build automation — we design <b>business systems</b>.
-      Our solutions are created to reduce workload, increase response speed,
-      and improve customer experience.
-    </p>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-top:40px;">
-      <div class="card">⚡ Faster Response Time</div>
-      <div class="card">🤖 AI-Powered Workflows</div>
-      <div class="card">📈 Better Lead Conversion</div>
-      <div class="card">🛠 Custom Business Logic</div>
-    </div>
-  </div>
-</section>
-
 <section id="services">
-  <div class="container">
-    <h2>Our Services</h2>
-    <p style="text-align:center; max-width:900px; margin:0 auto 40px;">
-      All our services are designed for businesses that want serious, long-term automation solutions.
-    </p>
-    <div style="text-align:center; margin-bottom:40px;">
-      <a href="https://wa.me/919416693052" class="btn">Get Free Consultation</a>
-      <a href="#contact" class="btn btn-outline">Contact Details</a>
-    </div>
   <div class="container">
     <h2>Our Services</h2>
     <p style="text-align:center; max-width:900px; margin:0 auto 40px;">
       All our services are designed for businesses that want serious, long-term automation solutions.
       Pricing reflects custom setup, testing, and post-deployment support.
     </p>
-  <div class="container">
-    <h2>Our Services</h2>
+
+    <div style="text-align:center; margin-bottom:40px;">
+      <a href="https://wa.me/919416693052" class="btn">Get Free Consultation</a>
+      <a href="#contact" class="btn btn-outline">Contact Details</a>
+    </div>
 
     <div class="services">
 
+      <!-- Service 1 -->
       <div class="card">
         <h3>AI Enquiry Automation System</h3>
         <p>
@@ -100,6 +30,7 @@
         <a href="https://wa.me/919416693052" class="btn">Discuss on WhatsApp</a>
       </div>
 
+      <!-- Service 2 -->
       <div class="card">
         <h3>WhatsApp Business Automation</h3>
         <p>
@@ -115,6 +46,7 @@
         <a href="https://wa.me/919416693052" class="btn">Discuss on WhatsApp</a>
       </div>
 
+      <!-- Service 3 -->
       <div class="card">
         <h3>AI Chatbot for Websites</h3>
         <p>
@@ -130,6 +62,7 @@
         <a href="https://wa.me/919416693052" class="btn">Discuss on WhatsApp</a>
       </div>
 
+      <!-- Service 4 -->
       <div class="card">
         <h3>Workflow & Business Automation</h3>
         <p>
@@ -145,6 +78,7 @@
         <a href="https://wa.me/919416693052" class="btn">Discuss on WhatsApp</a>
       </div>
 
+      <!-- Service 5 -->
       <div class="card">
         <h3>Custom AI Automation (Enterprise)</h3>
         <p>
@@ -163,67 +97,3 @@
     </div>
   </div>
 </section>
-
-<section id="how-it-works">
-  <div class="container">
-    <h2>How It Works</h2>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-top:30px;">
-      <div class="card"><b>1. Discovery</b><br/>We understand your business process and goals.</div>
-      <div class="card"><b>2. Design</b><br/>We design a custom automation workflow.</div>
-      <div class="card"><b>3. Build</b><br/>We build and test the automation thoroughly.</div>
-      <div class="card"><b>4. Launch</b><br/>Go live with monitoring and support.</div>
-    </div>
-  </div>
-</section>
-
-<section id="faq">
-  <div class="container">
-    <h2>Frequently Asked Questions</h2>
-    <div class="card"><b>How long does setup take?</b><br/>Typically 3–7 working days depending on complexity.</div>
-    <div class="card"><b>Do you provide support?</b><br/>Yes, post-launch support is included.</div>
-    <div class="card"><b>Is my data secure?</b><br/>We follow best practices to keep your data secure.</div>
-    <div class="card"><b>Can this scale with my business?</b><br/>Yes, all automations are built to scale.</div>
-  </div>
-</section>
-
-<section id="testimonials">
-  <div class="container">
-    <h2>What Clients Say</h2>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;">
-      <div class="card">“Our enquiry response time improved drastically.”<br/><b>— Coaching Institute</b></div>
-      <div class="card">“Automation saved us hours every day.”<br/><b>— Service Business</b></div>
-      <div class="card">“Professional setup and clear communication.”<br/><b>— Startup Founder</b></div>
-    </div>
-  </div>
-</section>
-
-<section id="contact">
-  <div class="container contact">
-    <h2>Ready to Automate Your Business?</h2>
-    <p style="max-width:800px;margin:auto;">
-      Book a free consultation call or message us on WhatsApp.
-      We’ll understand your process and suggest the right automation.
-    </p>
-    <div style="margin-top:30px;">
-      <a href="https://wa.me/919416693052" class="btn">Book Free Consultation</a>
-      <a href="mailto:team.nexflow.tech@gmail.com" class="btn btn-outline">Send Email</a>
-    </div>
-  <div class="container contact">
-    <h2>Contact Us</h2>
-    <p>
-      📧 team.nexflow.tech@gmail.com<br />
-      📞 +91 94166 93052
-    </p>
-    <a href="mailto:team.nexflow.tech@gmail.com" class="btn">Email Us</a>
-    <a href="https://wa.me/919416693052" class="btn btn-outline">WhatsApp</a>
-  </div>
-</section>
-
-<a href="https://wa.me/919416693052" class="floating-whatsapp">💬 WhatsApp</a>
-
-<footer>
-  © 2025 NexFlow.tech — AI Automation Agency. All rights reserved.
-</footer>
-
-</body>
-</html>
