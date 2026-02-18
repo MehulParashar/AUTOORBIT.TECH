@@ -2,119 +2,39 @@
 <html lang="en">
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if(target){ target.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+});
+</script>
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>AUTOORBIT.TECH | AI Automation Agency</title>
+<meta name="description" content="AUTOORBIT.TECH provides professional AI Automation services for businesses. Pricing starts from ₹10,000+." />
 
 <style>
-body {
-margin:0;
-font-family: Arial, sans-serif;
-background:#0f172a;
-color:#e5e7eb;
-line-height:1.6;
-}
-
-header {
-background:#020617;
-padding:70px 20px;
-text-align:center;
-}
-
-header h1 {
-font-size:42px;
-margin-bottom:10px;
-}
-
-section {
-padding:70px 20px;
-}
-
-.container {
-max-width:1100px;
-margin:auto;
-}
-
-h2 {
-text-align:center;
-margin-bottom:40px;
-}
-
-.services-grid {
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:25px;
-}
-
-.card {
-background:#020617;
-padding:30px;
-border-radius:16px;
-box-shadow:0 10px 30px rgba(0,0,0,0.4);
-transition:0.3s;
-}
-
-.card:hover {
-transform:translateY(-8px);
-}
-
-.price {
-font-size:18px;
-font-weight:bold;
-margin-top:10px;
-color:#38bdf8;
-}
-
-.btn {
-display:inline-block;
-margin-top:20px;
-padding:14px 32px;
-background:#38bdf8;
-color:#020617;
-border-radius:30px;
-text-decoration:none;
-font-weight:bold;
-cursor:pointer;
-}
-
-.hidden {
-display:none;
-}
-
-.center {
-text-align:center;
-margin-top:40px;
-}
-
-.view-btn {
-padding:14px 28px;
-background:#ffffff;
-color:#020617;
-border:none;
-border-radius:30px;
-font-weight:bold;
-cursor:pointer;
-}
-
-footer {
-background:#020617;
-padding:30px;
-text-align:center;
-font-size:14px;
-}
-
-.floating-whatsapp {
-position:fixed;
-bottom:20px;
-right:20px;
-background:#25D366;
-color:#fff;
-padding:14px 18px;
-border-radius:50px;
-text-decoration:none;
-font-weight:bold;
-z-index:999;
-}
+body { margin:0; font-family: Arial, sans-serif; background:#0f172a; color:#e5e7eb; line-height:1.6; }
+header { background:#020617; padding:70px 20px; text-align:center; }
+header h1 { font-size:42px; margin-bottom:10px; }
+header p { max-width:800px; margin:auto; }
+section { padding:70px 20px; }
+.container { max-width:1100px; margin:auto; }
+h2 { text-align:center; margin-bottom:20px; }
+.services { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:25px; }
+.card { background:#020617; padding:30px; border-radius:16px; box-shadow:0 10px 30px rgba(0,0,0,0.4); }
+.price { font-size:20px; font-weight:bold; margin-top:10px; color:#38bdf8; }
+.btn { display:inline-block; margin-top:20px; padding:14px 32px; background:#38bdf8; color:#020617; border-radius:30px; text-decoration:none; font-weight:bold; }
+.btn-outline { background:transparent; color:#38bdf8; border:2px solid #38bdf8; margin-left:10px; }
+footer { background:#020617; padding:30px 20px; text-align:center; font-size:14px; }
+.contact { text-align:center; }
+.floating-whatsapp { position:fixed; bottom:20px; right:20px; background:#25D366; color:#fff; padding:14px 18px; border-radius:50px; text-decoration:none; font-weight:bold; z-index:999; }
 </style>
 
 </head>
@@ -122,111 +42,146 @@ z-index:999;
 
 <header>
 <h1>AUTOORBIT.TECH</h1>
-<p>Professional AI Automation Agency helping businesses scale and never miss a lead.</p>
+<p>Professional AI Automation Agency helping businesses scale, save time, and never miss a lead.</p>
+
+<div style="margin-top:25px;">
 <a href="#services" class="btn">View Services</a>
+<a href="https://wa.me/919416693052" class="btn btn-outline">WhatsApp Us</a>
+<a href="mailto:parasarmehul25@gmail.com" class="btn btn-outline">Email Us</a>
+</div>
 </header>
+
+<section id="about">
+<div class="container">
+<h2>Why AUTOORBIT.TECH?</h2>
+<p style="text-align:center; max-width:900px; margin:auto;">
+We don’t just build automation — we design <b>business systems</b>.
+Our solutions reduce workload, increase response speed,
+and improve customer experience.
+</p>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-top:40px;">
+<div class="card">⚡ Faster Response Time</div>
+<div class="card">🤖 AI-Powered Workflows</div>
+<div class="card">📈 Better Lead Conversion</div>
+<div class="card">🛠 Custom Business Logic</div>
+</div>
+</div>
+</section>
 
 <section id="services">
 <div class="container">
 
-<h2>Our AI & Automation Services</h2>
+<h2>Our Services</h2>
 
-<div class="services-grid">
+<p style="text-align:center; max-width:900px; margin:0 auto 40px;">
+All our services are designed for businesses that want serious, long-term automation solutions.
+Pricing reflects custom setup, testing, and post-deployment support.
+</p>
 
-<!-- MAIN SERVICES -->
+<div style="text-align:center; margin-bottom:40px;">
+<a href="https://wa.me/919416693052" class="btn">Get Free Consultation</a>
+<a href="#contact" class="btn btn-outline">Contact Details</a>
+</div>
+
+<div class="services">
 
 <div class="card">
 <h3>AI Enquiry Automation System</h3>
+<p>Complete enquiry automation for websites and landing pages with instant auto-replies and tracking.</p>
+<ul>
+<li>Instant email & form auto-reply</li>
+<li>Lead capture in Google Sheets / CRM</li>
+<li>Custom response templates</li>
+<li>Business-ready setup</li>
+</ul>
 <div class="price">Starting from ₹10,000</div>
-<a class="btn" onclick="sendWhatsApp('AI Enquiry Automation System')">Get Started</a>
+<a href="https://wa.me/919416693052" class="btn">Discuss on WhatsApp</a>
 </div>
 
 <div class="card">
 <h3>WhatsApp Business Automation</h3>
+<p>Automate WhatsApp conversations and follow-ups for faster response and better conversions.</p>
+<ul>
+<li>WhatsApp auto-replies</li>
+<li>Keyword-based flows</li>
+<li>Lead tagging & tracking</li>
+<li>Human handover option</li>
+</ul>
 <div class="price">Starting from ₹15,000</div>
-<a class="btn" onclick="sendWhatsApp('WhatsApp Business Automation')">Get Started</a>
+<a href="https://wa.me/919416693052" class="btn">Discuss on WhatsApp</a>
 </div>
 
 <div class="card">
 <h3>AI Chatbot for Websites</h3>
+<p>AI-powered chatbot working 24/7 to answer questions and qualify leads.</p>
+<ul>
+<li>Website chatbot integration</li>
+<li>FAQ automation</li>
+<li>Lead qualification</li>
+<li>Custom training</li>
+</ul>
 <div class="price">Starting from ₹18,000</div>
-<a class="btn" onclick="sendWhatsApp('AI Chatbot for Websites')">Get Started</a>
+<a href="https://wa.me/919416693052" class="btn">Discuss on WhatsApp</a>
 </div>
 
 <div class="card">
 <h3>Workflow & Business Automation</h3>
+<p>Custom automation solutions to reduce manual work and improve internal efficiency.</p>
+<ul>
+<li>Email & task automation</li>
+<li>Google Sheets workflows</li>
+<li>Multi-tool integrations</li>
+<li>Custom triggers</li>
+</ul>
 <div class="price">Starting from ₹20,000</div>
-<a class="btn" onclick="sendWhatsApp('Workflow & Business Automation')">Get Started</a>
-</div>
-
-<!-- HIDDEN SERVICES -->
-
-<div id="moreServices" class="hidden">
-
-<div class="card">
-<h3>Instagram DM Automation</h3>
-<div class="price">₹12,000+</div>
-<a class="btn" onclick="sendWhatsApp('Instagram DM Automation')">Get Started</a>
+<a href="https://wa.me/919416693052" class="btn">Discuss on WhatsApp</a>
 </div>
 
 <div class="card">
-<h3>Facebook Messenger Bot</h3>
-<div class="price">₹13,000+</div>
-<a class="btn" onclick="sendWhatsApp('Facebook Messenger Bot')">Get Started</a>
-</div>
-
-<div class="card">
-<h3>Telegram Bot Automation</h3>
-<div class="price">₹10,000+</div>
-<a class="btn" onclick="sendWhatsApp('Telegram Bot Automation')">Get Started</a>
-</div>
-
-<div class="card">
-<h3>Google Sheets Automation</h3>
-<div class="price">₹8,000+</div>
-<a class="btn" onclick="sendWhatsApp('Google Sheets Automation')">Get Started</a>
+<h3>Custom AI Automation (Enterprise)</h3>
+<p>End-to-end AI automation solutions tailored for scaling businesses.</p>
+<ul>
+<li>Requirement analysis</li>
+<li>Advanced integrations</li>
+<li>Scalable architecture</li>
+<li>Priority support</li>
+</ul>
+<div class="price">Starting from ₹25,000+</div>
+<a href="https://wa.me/919416693052" class="btn">Discuss on WhatsApp</a>
 </div>
 
 </div>
+</div>
+</section>
 
+<section id="contact">
+<div class="container contact">
+<h2>Ready to Automate Your Business?</h2>
+<p style="max-width:800px;margin:auto;">
+Book a free consultation call or message us on WhatsApp.
+</p>
+
+<div style="margin-top:30px;">
+<a href="https://wa.me/919416693052" class="btn">Book Free Consultation</a>
+<a href="mailto:parasarmehul25@gmail.com" class="btn btn-outline">Send Email</a>
 </div>
 
-<div class="center">
-<button onclick="toggleServices()" id="toggleBtn" class="view-btn">
-View More Services
-</button>
+<div style="margin-top:40px;">
+<p>
+📧 parasarmehul25@gmail.com<br>
+📞 +91 94166 93052
+</p>
 </div>
 
 </div>
 </section>
 
-<footer>
-© 2025 AUTOORBIT.TECH — AI Automation Agency
-</footer>
-
 <a href="https://wa.me/919416693052" class="floating-whatsapp">💬 WhatsApp</a>
 
-<script>
-function sendWhatsApp(serviceName) {
-var phoneNumber = "919416693052";
-var message = "Hi, I'm interested in " + serviceName + ". Please share complete details.";
-var url = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(message);
-window.open(url, "_blank");
-}
-
-function toggleServices() {
-var more = document.getElementById("moreServices");
-var btn = document.getElementById("toggleBtn");
-
-if (more.style.display === "block") {
-more.style.display = "none";
-btn.innerHTML = "View More Services";
-} else {
-more.style.display = "block";
-btn.innerHTML = "View Less Services";
-}
-}
-</script>
+<footer>
+© 2025 AUTOORBIT.TECH — AI Automation Agency. All rights reserved.
+</footer>
 
 </body>
 </html>
