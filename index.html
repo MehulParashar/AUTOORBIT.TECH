@@ -3,31 +3,152 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AutoOrbit.Tech | AI Automation Agency</title>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<title>AutoOrbit.Tech — AI Automation Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth;}
-body{font-family:'Poppins',sans-serif;background:#0a0f1c;color:white;}
-header{display:flex;justify-content:space-between;align-items:center;padding:20px 8%;position:fixed;width:100%;background:rgba(10,15,28,0.9);z-index:1000;}
-.logo{font-family:'Orbitron';color:#00f0ff;font-size:22px;}
-nav a{color:white;text-decoration:none;margin-left:20px;transition:.3s;}
-nav a:hover{color:#00f0ff;}
-.hero{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:0 10%;background:radial-gradient(circle,#001f3f,#0a0f1c);}
-.hero h1{font-size:50px;font-family:'Orbitron';text-shadow:0 0 20px #00f0ff;}
-.hero p{max-width:600px;margin:20px 0;color:#a0aec0;}
-.btn{display:inline-block;padding:12px 30px;background:#00f0ff;color:black;border-radius:50px;text-decoration:none;font-weight:600;box-shadow:0 0 15px #00f0ff;transition:.3s;}
-.btn:hover{background:white;}
-section{padding:100px 8%;}
-.section-title{text-align:center;margin-bottom:60px;font-family:'Orbitron';color:#00f0ff;font-size:30px;}
-.services{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:30px;}
-.card{background:#111827;padding:30px;border-radius:15px;border:1px solid #00f0ff33;transition:.4s;}
-.card:hover{transform:translateY(-10px);box-shadow:0 0 25px #00f0ff66;}
-.card h3{color:#00f0ff;margin-bottom:10px;}
-.about{text-align:center;max-width:800px;margin:auto;color:#94a3b8;}
-footer{text-align:center;padding:20px;background:#111827;color:#6b7280;}
-.pricing-card{background:#111827;padding:30px;border-radius:15px;text-align:center;border:1px solid #00f0ff33;}
-.pricing-card h2{margin:15px 0;color:#00f0ff;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+font-family:'Inter',sans-serif;
+background:#ffffff;
+color:#111;
+line-height:1.6;
+}
+
+header{
+position:fixed;
+top:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 8%;
+background:rgba(255,255,255,0.8);
+backdrop-filter:blur(10px);
+border-bottom:1px solid #eee;
+z-index:1000;
+}
+
+.logo{
+font-weight:700;
+font-size:18px;
+letter-spacing:-0.5px;
+}
+
+nav a{
+text-decoration:none;
+color:#111;
+margin-left:25px;
+font-weight:500;
+}
+
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:0 10%;
+}
+
+.hero h1{
+font-size:60px;
+font-weight:700;
+letter-spacing:-2px;
+max-width:900px;
+}
+
+.hero p{
+margin-top:20px;
+font-size:20px;
+color:#555;
+max-width:650px;
+}
+
+.btn{
+margin-top:30px;
+padding:14px 35px;
+background:#111;
+color:white;
+text-decoration:none;
+border-radius:30px;
+font-weight:600;
+transition:0.3s;
+}
+
+.btn:hover{
+background:#333;
+}
+
+section{
+padding:120px 8%;
+}
+
+.section-title{
+font-size:40px;
+font-weight:700;
+text-align:center;
+margin-bottom:80px;
+letter-spacing:-1px;
+}
+
+.services{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:60px;
+}
+
+.card{
+padding:20px;
+}
+
+.card h3{
+font-size:22px;
+margin-bottom:15px;
+}
+
+.card p{
+color:#666;
+margin-bottom:20px;
+}
+
+.pricing{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:40px;
+text-align:center;
+}
+
+.price-card{
+border:1px solid #eee;
+padding:40px;
+border-radius:20px;
+}
+
+.price-card h2{
+font-size:32px;
+margin:15px 0;
+}
+
+footer{
+padding:40px;
+text-align:center;
+border-top:1px solid #eee;
+color:#777;
+}
+
+.whatsapp{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+color:white;
+padding:15px 20px;
+border-radius:30px;
+text-decoration:none;
+font-weight:600;
+}
 </style>
 </head>
 
@@ -43,76 +164,66 @@ footer{text-align:center;padding:20px;background:#111827;color:#6b7280;}
 </header>
 
 <div class="hero">
-<h1>Automate. Scale. Dominate.</h1>
-<p>We build AI-powered automation systems and high-converting websites for modern businesses.</p>
-<a href="#contact" class="btn">Start Now</a>
+<h1>Automation for the next generation of businesses.</h1>
+<p>We design intelligent systems, premium websites, and automation workflows that help companies scale effortlessly.</p>
+<a href="https://wa.me/919999999999?text=Hi%20I%20want%20to%20automate%20my%20business" class="btn">Start a Project</a>
 </div>
 
 <section id="services">
-<h2 class="section-title">Our Services</h2>
+<h2 class="section-title">What We Do</h2>
+
 <div class="services">
 
 <div class="card">
-<h3>AI Chatbots</h3>
-<p>Smart WhatsApp & website bots.</p>
-<a href="https://wa.me/919999999999?text=Hi%20I%20am%20interested%20in%20AI%20Chatbot%20Service" class="btn">Enquire</a>
+<h3>AI Chat Systems</h3>
+<p>Custom AI chatbots for websites and WhatsApp automation.</p>
+<a href="https://wa.me/919999999999?text=Interested%20in%20AI%20Chatbot" class="btn">Enquire</a>
 </div>
 
 <div class="card">
-<h3>Website Development</h3>
-<p>Modern premium websites.</p>
-<a href="https://wa.me/919999999999?text=Hi%20I%20am%20interested%20in%20Website%20Development" class="btn">Enquire</a>
-</div>
-
-<div class="card">
-<h3>Landing Pages</h3>
-<p>High-converting sales pages.</p>
-<a href="https://wa.me/919999999999?text=Hi%20I%20am%20interested%20in%20Landing%20Page" class="btn">Enquire</a>
+<h3>Website Design</h3>
+<p>Minimal, high-performance websites built for conversion.</p>
+<a href="https://wa.me/919999999999?text=Interested%20in%20Website%20Development" class="btn">Enquire</a>
 </div>
 
 <div class="card">
 <h3>Workflow Automation</h3>
-<p>CRM & business automation.</p>
-<a href="https://wa.me/919999999999?text=Hi%20I%20am%20interested%20in%20Workflow%20Automation" class="btn">Enquire</a>
+<p>Automate CRM, emails, and internal operations.</p>
+<a href="https://wa.me/919999999999?text=Interested%20in%20Workflow%20Automation" class="btn">Enquire</a>
 </div>
 
 <div class="card">
-<h3>WhatsApp Automation</h3>
-<p>Auto replies & lead capture.</p>
-<a href="https://wa.me/919999999999?text=Hi%20I%20am%20interested%20in%20WhatsApp%20Automation" class="btn">Enquire</a>
-</div>
-
-<div class="card">
-<h3>Business Consulting</h3>
-<p>Optimize & scale operations.</p>
-<a href="https://wa.me/919999999999?text=Hi%20I%20am%20interested%20in%20Business%20Consulting" class="btn">Enquire</a>
+<h3>Landing Pages</h3>
+<p>Sales-focused pages designed to convert traffic into revenue.</p>
+<a href="https://wa.me/919999999999?text=Interested%20in%20Landing%20Page" class="btn">Enquire</a>
 </div>
 
 </div>
 </section>
 
 <section id="pricing">
-<h2 class="section-title">Pricing Plans</h2>
-<div class="services">
+<h2 class="section-title">Simple Pricing</h2>
 
-<div class="pricing-card">
+<div class="pricing">
+
+<div class="price-card">
 <h3>Starter</h3>
 <h2>₹4,999</h2>
-<p>1 Page Website</p>
+<p>Landing Page</p>
 <p>Basic Design</p>
 <p>3 Days Delivery</p>
 </div>
 
-<div class="pricing-card" style="border:2px solid #00f0ff;">
+<div class="price-card">
 <h3>Growth</h3>
 <h2>₹9,999</h2>
 <p>5 Page Website</p>
-<p>Basic Automation</p>
 <p>WhatsApp Integration</p>
+<p>Basic Automation</p>
 </div>
 
-<div class="pricing-card">
-<h3>Pro Automation</h3>
+<div class="price-card">
+<h3>Pro</h3>
 <h2>₹19,999</h2>
 <p>Full Website</p>
 <p>AI Chatbot</p>
@@ -123,24 +234,21 @@ footer{text-align:center;padding:20px;background:#111827;color:#6b7280;}
 </section>
 
 <section id="contact">
-<h2 class="section-title">Contact Us</h2>
-<div class="about">
-<p>Email: parasarmehul25@gmail.com</p>
-<p>WhatsApp: +91 9999999999</p>
-<a href="https://wa.me/919999999999?text=Hi%20I%20visited%20your%20website" class="btn">Chat on WhatsApp</a>
+<h2 class="section-title">Let’s Build Something Great</h2>
+<div style="text-align:center;">
+<p>Email: autorbitech@gmail.com</p>
+<br>
+<a href="https://wa.me/919416693052?text=Hi%20I%20visited%20AutoOrbit.Tech" class="btn">Chat on WhatsApp</a>
 </div>
 </section>
 
 <footer>
-© 2026 AutoOrbit.Tech | AI Automation Agency
+© 2026 AutoOrbit.Tech — AI Automation Studio
 </footer>
 
-<a href="https://wa.me/919999999999?text=Hi%20I%20visited%20your%20website%20AutoOrbit.Tech"
-style="position:fixed;bottom:20px;right:20px;background:#25D366;color:white;padding:15px 20px;border-radius:50px;text-decoration:none;font-weight:bold;box-shadow:0 0 20px #25D366;z-index:999;">
+<a href="https://wa.me/919416693052?text=Hi%20I%20visited%20your%20website" class="whatsapp">
 WhatsApp
 </a>
 
 </body>
 </html>
-
-
