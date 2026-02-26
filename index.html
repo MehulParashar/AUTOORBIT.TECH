@@ -3,70 +3,36 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AUTOORBIT.TECH | AI Automation Agency</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<title>AUTOORBIT.TECH | Web & AI Solutions</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
 body{
 font-family:'Inter',sans-serif;
-background:#f9fafb;
+background:#ffffff;
 color:#111;
-line-height:1.6;
-overflow-x:hidden;
 }
 
-/* Animated Gradient Background */
-body::before{
-content:"";
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:linear-gradient(-45deg,#e0f2fe,#f0f9ff,#ffffff,#f0f9ff);
-background-size:400% 400%;
-animation:gradientMove 15s ease infinite;
-z-index:-1;
-}
-
-@keyframes gradientMove{
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
-}
-
-/* HEADER */
+/* Header */
 header{
 position:fixed;
 top:0;
 width:100%;
-background:rgba(255,255,255,0.8);
-backdrop-filter:blur(10px);
+background:#ffffff;
 border-bottom:1px solid #eee;
-padding:20px 8%;
+padding:18px 8%;
 display:flex;
 justify-content:space-between;
 align-items:center;
 z-index:1000;
 }
+.logo{font-weight:700;}
+nav a{text-decoration:none;color:#111;margin-left:20px;}
 
-.logo{
-font-weight:700;
-font-size:18px;
-}
-
-nav a{
-text-decoration:none;
-color:#111;
-margin-left:25px;
-font-weight:500;
-}
-
-/* HERO */
+/* Hero */
 .hero{
-height:100vh;
+height:85vh;
 display:flex;
 flex-direction:column;
 justify-content:center;
@@ -75,226 +41,243 @@ text-align:center;
 padding:0 10%;
 margin-top:60px;
 }
-
-.hero h1{
-font-size:58px;
-font-weight:700;
-letter-spacing:-2px;
-max-width:900px;
-}
-
-.hero p{
-margin-top:20px;
-font-size:20px;
-color:#555;
-max-width:650px;
-}
+.hero h1{font-size:42px;font-weight:700;}
+.hero p{margin-top:15px;font-size:18px;color:#555;}
 
 .btn{
 display:inline-block;
-margin-top:25px;
-padding:14px 35px;
-background:#111;
-color:white;
+margin-top:15px;
+padding:10px 22px;
+background:#000;
+color:#fff;
+border-radius:25px;
 text-decoration:none;
-border-radius:30px;
-font-weight:600;
+cursor:pointer;
 transition:0.3s;
 }
+.btn:hover{opacity:0.8;}
 
-.btn:hover{
-background:#333;
-}
-
-/* SECTIONS */
-section{
-padding:120px 8%;
-}
-
-.section-title{
-font-size:38px;
-font-weight:700;
-text-align:center;
-margin-bottom:70px;
-}
+section{padding:80px 8%;}
+.section-title{text-align:center;font-size:30px;margin-bottom:35px;}
 
 .services{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:40px;
+grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+gap:20px;
 }
 
 .card{
-padding:30px;
+background:#ffffff;
+padding:20px;
+border-radius:12px;
 border:1px solid #eee;
-border-radius:20px;
-background:white;
+text-align:center;
 transition:0.3s;
 }
-
 .card:hover{
-transform:translateY(-8px);
-box-shadow:0 25px 50px rgba(0,0,0,0.08);
+transform:translateY(-5px);
+box-shadow:0 10px 25px rgba(0,0,0,0.05);
 }
+.card h3{margin-bottom:8px;}
+.card p{color:#666;font-size:14px;margin-bottom:8px;}
+.price{font-weight:700;margin-bottom:10px;}
 
-.card h3{
-margin-bottom:12px;
-}
+.about{text-align:center;max-width:800px;margin:auto;}
 
-.card p{
-color:#666;
-margin-bottom:15px;
-}
-
-.price{
-font-weight:600;
-}
-
-/* CONTACT */
-.contact{
+.contact-box{
 text-align:center;
+padding:30px;
+border:1px solid #eee;
+border-radius:12px;
+max-width:600px;
+margin:auto;
 }
 
 footer{
-padding:40px;
 text-align:center;
+padding:30px;
 border-top:1px solid #eee;
-color:#777;
 }
 
-.whatsapp{
+/* Floating Buttons */
+.float-email{
+position:fixed;
+bottom:80px;
+right:20px;
+background:#2563eb;
+color:#fff;
+padding:14px 18px;
+border-radius:50px;
+text-decoration:none;
+font-weight:600;
+}
+.float-email:hover{background:#1d4ed8;}
+
+.float-whatsapp{
 position:fixed;
 bottom:20px;
 right:20px;
 background:#25D366;
-color:white;
-padding:15px 20px;
-border-radius:30px;
+color:#fff;
+padding:14px 18px;
+border-radius:50px;
 text-decoration:none;
 font-weight:600;
-box-shadow:0 8px 20px rgba(0,0,0,0.2);
 }
+.float-whatsapp:hover{background:#1da851;}
+
 </style>
 
 <script>
-function sendWhatsApp(serviceName){
 const phone="919416693052";
-const message=`Hi AUTOORBIT.TECH, I am interested in your ${serviceName} service. Please share details.`;
-const url=`https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-window.open(url,'_blank');
+const email="autorbitech@gmail.com";
+
+function sendWhatsApp(service){
+const message=`Hi AUTOORBIT.TECH, I want details for ${service}.`;
+window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`,'_blank');
+}
+
+function sendEmail(){
+window.location.href=`mailto:${email}`;
 }
 </script>
-
 </head>
+
 <body>
 
 <header>
 <div class="logo">AUTOORBIT.TECH</div>
 <nav>
-<a href="#services">Services</a>
+<a href="#web">Web</a>
+<a href="#ai">AI</a>
 <a href="#contact">Contact</a>
 </nav>
 </header>
 
 <div class="hero">
-<h1>Intelligent Automation for Modern Businesses.</h1>
-<p>We build AI systems that reduce workload, increase efficiency, and scale operations seamlessly.</p>
-<a href="#" class="btn" onclick="sendWhatsApp('Free Consultation')">Start a Project</a>
+<h1>Affordable Websites & AI Automation for Growing Businesses </h1>
+<p>We build professional websites and smart automation systems that help schools, coaching institutes, large business  and small businesses  attract more customers and respond faster.</p>
+<a class="btn" onclick="sendWhatsApp('Free Consultation')">Get Started</a>
 </div>
 
-<section id="services">
-<h2 class="section-title">Our Services</h2>
+<!-- WEBSITE SERVICES -->
+<section id="web">
+<h2 class="section-title">Website Services</h2>
+<div class="services">
+
+<div class="card">
+<h3>School Website</h3>
+<p>Admission, gallery & contact page.</p>
+<div class="price">₹3,999</div>
+<a class="btn" onclick="sendWhatsApp('School Website')">Enquire</a>
+</div>
+
+<div class="card">
+<h3>Coaching Website</h3>
+<p>Courses & student details.</p>
+<div class="price">₹3,499</div>
+<a class="btn" onclick="sendWhatsApp('Coaching Website')">Enquire</a>
+</div>
+
+<div class="card">
+<h3>Small Business Website</h3>
+<p>Professional business website.</p>
+<div class="price">₹2,999</div>
+<a class="btn" onclick="sendWhatsApp('Business Website')">Enquire</a>
+</div>
+
+<div class="card">
+<h3>Landing Page</h3>
+<p>Single page for ads & offers.</p>
+<div class="price">₹2,499</div>
+<a class="btn" onclick="sendWhatsApp('Landing Page')">Enquire</a>
+</div>
+
+<div class="card">
+<h3>E-commerce Website</h3>
+<p>Online store with payment gateway.</p>
+<div class="price">₹7,999</div>
+<a class="btn" onclick="sendWhatsApp('E-commerce Website')">Enquire</a>
+</div>
+
+<div class="card">
+<h3>Portfolio Website</h3>
+<p>Personal brand website.</p>
+<div class="price">₹2,999</div>
+<a class="btn" onclick="sendWhatsApp('Portfolio Website')">Enquire</a>
+</div>
+
+</div>
+</section>
+
+<!-- AI SERVICES -->
+<section id="ai">
+<h2 class="section-title">AI Automation Services</h2>
 <div class="services">
 
 <div class="card">
 <h3>AI Enquiry Automation</h3>
-<p>Auto-replies & CRM integration.</p>
-<div class="price">₹10,000+</div>
-<a href="#" class="btn" onclick="sendWhatsApp('AI Enquiry Automation')">Enquire</a>
+<p>Auto replies + lead tracking.</p>
+<div class="price">₹8,000</div>
+<a class="btn" onclick="sendWhatsApp('AI Enquiry Automation')">Enquire</a>
 </div>
 
 <div class="card">
 <h3>WhatsApp Automation</h3>
-<p>Smart reply & follow-up system.</p>
-<div class="price">₹15,000+</div>
-<a href="#" class="btn" onclick="sendWhatsApp('WhatsApp Automation')">Enquire</a>
-</div>
-
-<div class="card">
-<h3>AI Website Chatbot</h3>
-<p>24/7 automated customer assistant.</p>
-<div class="price">₹18,000+</div>
-<a href="#" class="btn" onclick="sendWhatsApp('AI Website Chatbot')">Enquire</a>
-</div>
-
-<div class="card">
-<h3>Workflow Automation</h3>
-<p>Email & task automation systems.</p>
-<div class="price">₹20,000+</div>
-<a href="#" class="btn" onclick="sendWhatsApp('Workflow Automation')">Enquire</a>
-</div>
-
-<div class="card">
-<h3>Landing Page Design</h3>
-<p>High-converting sales pages.</p>
-<div class="price">₹8,000+</div>
-<a href="#" class="btn" onclick="sendWhatsApp('Landing Page Design')">Enquire</a>
-</div>
-
-<div class="card">
-<h3>CRM Setup</h3>
-<p>Lead tracking & automation setup.</p>
-<div class="price">₹12,000+</div>
-<a href="#" class="btn" onclick="sendWhatsApp('CRM Setup')">Enquire</a>
+<p>Smart auto reply system.</p>
+<div class="price">₹8,000</div>
+<a class="btn" onclick="sendWhatsApp('WhatsApp Automation')">Enquire</a>
 </div>
 
 <div class="card">
 <h3>Email Automation</h3>
-<p>Drip campaigns & auto responders.</p>
-<div class="price">₹9,000+</div>
-<a href="#" class="btn" onclick="sendWhatsApp('Email Automation')">Enquire</a>
+<p>Automatic email campaigns.</p>
+<div class="price">₹8,000</div>
+<a class="btn" onclick="sendWhatsApp('Email Automation')">Enquire</a>
 </div>
 
 <div class="card">
-<h3>API Integration</h3>
-<p>Custom system integrations.</p>
-<div class="price">₹15,000+</div>
-<a href="#" class="btn" onclick="sendWhatsApp('API Integration')">Enquire</a>
+<h3>CRM Automation</h3>
+<p>Lead management system.</p>
+<div class="price">₹10,000</div>
+<a class="btn" onclick="sendWhatsApp('CRM Automation')">Enquire</a>
 </div>
 
 <div class="card">
-<h3>Business Process Design</h3>
-<p>System architecture planning.</p>
-<div class="price">Custom</div>
-<a href="#" class="btn" onclick="sendWhatsApp('Business Process Design')">Enquire</a>
+<h3>Chatbot Integration</h3>
+<p>AI chatbot for website.</p>
+<div class="price">₹9,000</div>
+<a class="btn" onclick="sendWhatsApp('Chatbot Integration')">Enquire</a>
 </div>
 
-<div class="card">
-<h3>Enterprise AI Solutions</h3>
-<p>End-to-end scalable AI systems.</p>
-<div class="price">Custom</div>
-<a href="#" class="btn" onclick="sendWhatsApp('Enterprise AI Solutions')">Enquire</a>
 </div>
+</section>
 
+<section id="about">
+<h2 class="section-title">About Us</h2>
+<div class="about">
+<p>
+AUTOORBIT.TECH provides affordable digital solutions for schools and small businesses.
+We focus on simple, effective systems that help you grow online easily.
+</p>
 </div>
 </section>
 
 <section id="contact">
-<h2 class="section-title">Let’s Build Something Great</h2>
-<div class="contact">
-<p>Email:autorbitech@gmail.com</p>
+<h2 class="section-title">Contact Us</h2>
+<div class="contact-box">
+<p><strong>Email:</strong> autorbitech@gmail.com</p>
 <br>
-<a href="#" class="btn" onclick="sendWhatsApp('General Enquiry')">Chat on WhatsApp</a>
+<a class="btn" onclick="sendWhatsApp('General Enquiry')">Chat on WhatsApp</a>
 </div>
 </section>
 
 <footer>
-© 2026 AUTOORBIT.TECH AI Automation Agency
+© 2026 AUTOORBIT.TECH | Web & AI Solutions
 </footer>
 
-<a href="#" class="whatsapp" onclick="sendWhatsApp('Website Visitor')">
-💬 WhatsApp
-</a>
+<a class="float-email" onclick="sendEmail()">Email</a>
+<a class="float-whatsapp" onclick="sendWhatsApp('Website Visitor')">WhatsApp</a>
 
 </body>
 </html>
