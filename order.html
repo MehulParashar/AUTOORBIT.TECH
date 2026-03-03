@@ -1,139 +1,169 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>AUTOORBIT Checkout</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Checkout | AUTOORBIT</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+
+<!-- Razorpay Script -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
 <style>
-body{
-font-family:Arial;
-background:#0f172a;
-color:white;
-padding:20px;
+.checkout-box{
+max-width:700px;
+margin:auto;
 }
-.card{
-background:#1e293b;
-padding:15px;
-margin-bottom:15px;
-border-radius:8px;
-}
-button{
-padding:10px;
+.remove-btn{
+margin-left:10px;
+color:red;
+background:none;
 border:none;
-border-radius:6px;
 cursor:pointer;
-margin-top:5px;
 }
-.btn{
-background:#3b82f6;
-color:white;
-width:100%;
-}
-.green{
-background:#16a34a;
-color:white;
-width:100%;
-}
-input{
-width:100%;
-padding:10px;
-margin-top:10px;
-border-radius:6px;
-border:none;
+.success{
+color:lime;
+font-weight:600;
+margin-top:15px;
 }
 </style>
 </head>
 <body>
 
-<h2>AUTOORBIT Checkout</h2>
+<header>
+<div class="logo">AUTOORBIT.TECH</div>
+<nav>
+<a href="index.html">Home</a>
+<a href="web-development.html">Web Dev</a>
+<a href="ai-automation.html">AI Automation</a>
+<a href="order.html">Checkout</a>
+</nav>
+</header>
 
-<!-- DEMO SERVICES -->
-<div class="card">
-<h3>Business Website</h3>
-<p>₹4999</p>
-<button onclick="addToCart('Business Website',4999)">Add to Cart</button>
-</div>
+<section>
+<h2 class="section-title">Checkout</h2>
 
-<div class="card">
-<h3>AI Automation Setup</h3>
-<p>₹8000</p>
-<button onclick="addToCart('AI Automation Setup',8000)">Add to Cart</button>
-</div>
+<div class="checkout-box">
 
-<div class="card">
-<h3>E-commerce Website</h3>
-<p>₹9999</p>
-<button onclick="addToCart('E-commerce Website',9999)">Add to Cart</button>
-</div>
-
-<hr>
-
-<h3>Your Cart</h3>
 <div id="cartItems"></div>
-<h3 id="total"></h3>
+<div id="cartTotal" class="total-box"></div>
 
-<input type="text" id="coupon" placeholder="Enter Coupon (AUTO10)">
-<button class="btn" onclick="applyCoupon()">Apply Coupon</button>
+<hr style="margin:30px 0;border:1px solid rgba(255,255,255,0.1);">
 
-<hr>
+<h3>Apply Coupon</h3>
+<input type="text" id="coupon" placeholder="Enter Coupon Code">
+<button onclick="applyCoupon()" class="btn" style="margin-top:10px;">Apply Coupon</button>
 
-<input type="text" id="customerName" placeholder="Your Name">
+<hr style="margin:30px 0;border:1px solid rgba(255,255,255,0.1);">
+
+<h3>Customer Details</h3>
+<input type="text" id="customerName" placeholder="Your Full Name">
 <input type="text" id="customerPhone" placeholder="Your Phone Number">
 
-<button class="green" onclick="payWithUPI()">Pay via UPI</button>
+<div id="paymentStatus"></div>
+
+<button class="btn" style="width:100%;margin-top:15px;background:#0ea5e9;" onclick="payWithRazorpay()">
+Pay with Razorpay
+</button>
+
+</div>
+</section>
+
+<footer>
+© 2026 AUTOORBIT.TECH | Mega Enterprise AI & Web Systems
+</footer>
 
 <script>
 
-let cart = [];
+// ================================
+// CONFIG
+// ================================
+const ADMIN_PHONE = "919416693052";
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 let discount = 0;
 
-function addToCart(name, price){
-cart.push({name, price});
-updateCart();
-}
+// ================================
+// LOAD CART
+// ================================
+function loadCart(){
 
-function removeItem(index){
-cart.splice(index,1);
-updateCart();
-}
-
-function updateCart(){
 let cartDiv = document.getElementById("cartItems");
+let totalDiv = document.getElementById("cartTotal");
+
+if(cart.length === 0){
+cartDiv.innerHTML = "<p>Your cart is empty.</p>";
+totalDiv.innerHTML = "";
+return;
+}
+
+let html = "<h3>Your Selected Services:</h3>";
 let total = 0;
-let html = "";
 
 cart.forEach((item,index)=>{
 html += `
 <p>
-${item.name} - ₹${item.price}
-<button onclick="removeItem(${index})" style="color:red;">X</button>
+${index+1}. ${item.name} - ₹${item.price}
+<button class="remove-btn" onclick="removeItem(${index})">Remove</button>
 </p>
 `;
-total += item.price;
+total += parseInt(item.price);
 });
 
 total = total - discount;
 if(total < 0) total = 0;
 
 cartDiv.innerHTML = html;
-document.getElementById("total").innerText = "Total: ₹" + total;
+totalDiv.innerHTML = "Total Amount: ₹" + total;
 }
 
+// ================================
+// REMOVE ITEM
+// ================================
+function removeItem(index){
+cart.splice(index,1);
+localStorage.setItem("cart", JSON.stringify(cart));
+loadCart();
+}
+
+// ================================
+// APPLY COUPON
+// ================================
 function applyCoupon(){
+
 let code = document.getElementById("coupon").value.trim();
 
 if(code === "AUTO10"){
 discount = 1000;
-alert("₹1000 Discount Applied");
-}else{
+alert("Coupon Applied! ₹1000 Discount");
+}
+else if(code === "AUTO20"){
+discount = 2000;
+alert("Coupon Applied! ₹2000 Discount");
+}
+else{
 discount = 0;
-alert("Invalid Coupon");
+alert("Invalid Coupon Code");
 }
 
-updateCart();
+loadCart();
 }
 
-function payWithUPI(){
+// ================================
+// CALCULATE TOTAL
+// ================================
+function calculateFinalTotal(){
+let total = 0;
+cart.forEach(item=>{
+total += parseInt(item.price);
+});
+total = total - discount;
+if(total < 0) total = 0;
+return total;
+}
+
+// ================================
+// RAZORPAY PAYMENT
+// ================================
+function payWithRazorpay(){
 
 if(cart.length === 0){
 alert("Cart is empty");
@@ -144,51 +174,55 @@ let name = document.getElementById("customerName").value;
 let phoneInput = document.getElementById("customerPhone").value;
 
 if(name === "" || phoneInput === ""){
-alert("Enter name & phone");
+alert("Please enter your name and phone number");
 return;
 }
 
-let total = 0;
-cart.forEach(item=>{
-total += item.price;
-});
-total = total - discount;
-if(total < 0) total = 0;
+let total = calculateFinalTotal();
 
-// FamPay UPI
-let upiID = "9416693052@fam";
-let merchantName = "AUTOORBIT TECH";
+var options = {
+"key": "YOUR_RAZORPAY_KEY_HERE",   // 🔴 Replace with your real key
+"amount": total * 100,
+"currency": "INR",
+"name": "AUTOORBIT.TECH",
+"description": "Website / AI Services",
 
-let upiURL = `upi://pay?pa=${upiID}&pn=${merchantName}&am=${total}&cu=INR`;
+"handler": function (response){
 
-window.location.href = upiURL;
+// PAYMENT SUCCESS → SEND WHATSAPP
 
-// WhatsApp message after 3 sec
-setTimeout(()=>{
-
-let message = "💰 UPI PAYMENT INITIATED\n\n";
+let message = "✅ PAYMENT SUCCESSFUL\n\n";
+message += "Payment ID: " + response.razorpay_payment_id + "\n\n";
 message += "Customer Name: " + name + "\n";
 message += "Customer Phone: " + phoneInput + "\n\n";
-message += "Order Details:\n";
+message += "Ordered Services:\n";
 
 cart.forEach((item,index)=>{
 message += (index+1) + ". " + item.name + " - ₹" + item.price + "\n";
 });
 
-message += "\nAmount to Pay: ₹" + total;
-message += "\n\nPlease send payment screenshot.";
+message += "\nTotal Paid: ₹" + total;
 
 window.open(
-"https://wa.me/919416693052?text=" + encodeURIComponent(message),
+"https://wa.me/" + ADMIN_PHONE + "?text=" + encodeURIComponent(message),
 "_blank"
 );
 
+// Clear Cart
+localStorage.removeItem("cart");
 cart = [];
-updateCart();
-
-},3000);
+loadCart();
 
 }
+
+};
+
+var rzp1 = new Razorpay(options);
+rzp1.open();
+}
+
+// INITIAL LOAD
+loadCart();
 
 </script>
 
