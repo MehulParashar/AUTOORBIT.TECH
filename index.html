@@ -1,41 +1,93 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>AUTOORBIT | Mega Enterprise</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
-<script src="js/script.js"></script>
+<title>AUTOORBIT TECH - Maintenance</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+body{
+margin:0;
+font-family:Arial, sans-serif;
+background:linear-gradient(135deg,#0f172a,#111827);
+color:white;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+text-align:center;
+}
+
+.container{
+max-width:600px;
+padding:40px;
+background:rgba(255,255,255,0.05);
+border-radius:16px;
+backdrop-filter:blur(10px);
+box-shadow:0 0 30px rgba(0,0,0,0.4);
+}
+
+h1{
+font-size:40px;
+margin-bottom:10px;
+}
+
+p{
+opacity:0.8;
+margin-bottom:25px;
+}
+
+.loader{
+border:4px solid rgba(255,255,255,0.1);
+border-top:4px solid #0ea5e9;
+border-radius:50%;
+width:60px;
+height:60px;
+margin:20px auto;
+animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+0%{transform:rotate(0deg);}
+100%{transform:rotate(360deg);}
+}
+
+.social{
+margin-top:20px;
+}
+
+.social a{
+color:#0ea5e9;
+text-decoration:none;
+margin:0 10px;
+font-size:14px;
+}
+
+.footer{
+margin-top:30px;
+font-size:13px;
+opacity:0.6;
+}
+</style>
 </head>
 <body>
 
-<header>
-<div class="logo">AUTOORBIT.TECH</div>
-<nav>
-<a href="index.html">Home</a>
-<a href="web-development.html">Web Dev</a>
-<a href="ai-automation.html">AI Automation</a>
-<a href="order.html">Order</a>
-</nav>
-</header>
+<div class="container">
+<h1>🚧 Website Under Maintenance</h1>
+<p>We’re upgrading our system to serve you better.</p>
 
+<div class="loader"></div>
 
-<div class="hero">
-<h1>Complete Web Development & AI Automation Ecosystem</h1>
-<p>We design, build, automate and scale businesses using enterprise-grade web systems and artificial intelligence automation frameworks.</p>
-<a onclick="sendWhatsApp('Enterprise Strategy Call')" class="btn">Book Strategy Call</a>
+<p>Please check back soon.</p>
+
+<div class="social">
+<a href="https://wa.me/919416693052">Contact on WhatsApp</a>
 </div>
 
-<section>
-<h2 class="section-title">What is AI Automation?</h2>
-<div class="long-text">
-AI Automation is the use of Artificial Intelligence to automatically respond to enquiries, qualify leads, send follow-ups, manage CRM data, automate marketing workflows, integrate WhatsApp systems, and reduce manual workload. It allows businesses to operate 24/7 without human dependency, increasing efficiency, reducing cost, and maximizing revenue generation through intelligent systems.
+<div class="footer">
+© 2026 AUTOORBIT TECH
 </div>
-</section>
 
-
-<footer>
-© 2026 AUTOORBIT.TECH | Mega Enterprise AI & Web Systems
-</footer>
+</div>
 
 </body>
 </html>
