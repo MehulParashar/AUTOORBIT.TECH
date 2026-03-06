@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AUTOORBIT Invoice</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<style>
+body{
+font-family:Arial;
+background:#0f172a;
+color:white;
+margin:0;
+padding:20px;
+}
+
+.container{
+max-width:800px;
+margin:auto;
+background:#1e293b;
+padding:30px;
+border-radius:12px;
+}
+
+h2{
+text-align:center;
+}
+
+.table{
+width:100%;
+margin-top:20px;
+border-collapse:collapse;
+}
+
+.table th, .table td{
+padding:10px;
+border-bottom:1px solid rgba(255,255,255,0.1);
+}
+
+.total-box{
+margin-top:20px;
+text-align:right;
+}
+
+button{
+padding:10px 15px;
+border:none;
+border-radius:6px;
+cursor:pointer;
+margin-top:20px;
+margin-right:10px;
+}
+
+.btn{
+background:#3b82f6;
+color:white;
+}
+
+.print-btn{
+background:#22c55e;
+color:white;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<h2>AUTOORBIT TECH</h2>
+<h3 style="text-align:center;">Invoice</h3>
+
+<p><strong>Order ID:</strong> <span id="orderID"></span></p>
+<p><strong>Customer:</strong> <span id="customerName"></span></p>
+<p><strong>Phone:</strong> <span id="customerPhone"></span></p>
+<p><strong>Date:</strong> <span id="orderDate"></span></p>
+
+<table class="table">
+<thead>
+<tr>
+<th>#</th>
+<th>Service</th>
+<th>Price</th>
+</tr>
+</thead>
+<tbody id="invoiceItems"></tbody>
+</table>
+
+<div class="total-box">
+<p>Subtotal: ₹<span id="subtotal"></span></p>
+<p>GST (18%): ₹<span id="gst"></span></p>
+<h3>Grand Total: ₹<span id="grandTotal"></span></h3>
+</div>
+
+<button class="btn" onclick="downloadPDF()">Download PDF</button>
+<button class="print-btn" onclick="window.print()">Print</button>
+
+</div>
+
+<script>
+        <nav>
+
+<a href="index.html"class="btn">HOME</a>
+
+<a href="web-development.html"class="btn">WEB DEVELOPMENT </a>
+
+<a href="ai-automation.html"class="btn">AI AUTOMATION</a>
+
+<a href="order.html"class="btn">Order Now</a>
+
+<a href="aboutus.html"class="btn">ABOUT US </a>
+
+<a href="contact.html"class="btn">CONTACT US</a>
+
+
+
+</nav>
+
+let orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+if(orders.length === 0){
+alert("No order found");
+}else{
+
+let order = orders[orders.length - 1]; // last order
+
+document.getElementById("orderID").innerText = order.id;
+document.getElementById("customerName").innerText = order.name;
+document.getElementById("customerPhone").innerText = order.phone;
+document.getElementById("orderDate").innerText = order.date;
+
+let itemsHTML = "";
+let subtotal = 0;
+
+order.items.forEach((item,index)=>{
+itemsHTML += `
+<tr>
+<td>${index+1}</td>
+<td>${item.name}</td>
+<td>₹${item.price}</td>
+</tr>
+`;
+subtotal += parseInt(item.price);
+});
+
+let gst = subtotal * 0.18;
+let grandTotal = subtotal + gst;
+
+document.getElementById("invoiceItems").innerHTML = itemsHTML;
+document.getElementById("subtotal").innerText = subtotal.toFixed(2);
+document.getElementById("gst").innerText = gst.toFixed(2);
+document.getElementById("grandTotal").innerText = grandTotal.toFixed(2);
+
+}
+
+// PDF Download
+function downloadPDF(){
+
+const { jsPDF } = window.jspdf;
+const doc = new jsPDF();
+
+let order = orders[orders.length - 1];
+
+doc.setFontSize(16);
+doc.text("AUTOORBIT TECH INVOICE",20,20);
+
+doc.setFontSize(12);
+doc.text("Order ID: " + order.id,20,40);
+doc.text("Customer: " + order.name,20,50);
+doc.text("Phone: " + order.phone,20,60);
+doc.text("Date: " + order.date,20,70);
+
+let y = 90;
+let subtotal = 0;
+
+order.items.forEach((item,index)=>{
+doc.text((index+1)+". "+item.name+" - ₹"+item.price,20,y);
+subtotal += parseInt(item.price);
+y += 10;
+});
+
+let gst = subtotal * 0.18;
+let grandTotal = subtotal + gst;
+
+doc.text("Subtotal: ₹"+subtotal.toFixed(2),20,y+10);
+doc.text("GST (18%): ₹"+gst.toFixed(2),20,y+20);
+doc.text("Grand Total: ₹"+grandTotal.toFixed(2),20,y+30);
+
+doc.save(order.id + "-Invoice.pdf");
+}
+
+</script>
+
+</body>
+</html>
