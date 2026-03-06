@@ -1,0 +1,354 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<title>AUTOORBIT Checkout</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="css/style.css">
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<style>
+
+body{
+font-family:Arial;
+background:#0f172a;
+color:white;
+padding:20px;
+}
+
+.container{
+max-width:600px;
+margin:auto;
+background:#1e293b;
+padding:25px;
+border-radius:12px;
+}
+
+input{
+width:100%;
+padding:10px;
+margin-top:10px;
+border-radius:6px;
+border:none;
+outline:none;
+}
+
+button{
+padding:12px;
+margin-top:15px;
+width:100%;
+border:none;
+border-radius:8px;
+background:linear-gradient(135deg,#ac00f0,#0ea5e9);
+color:white;
+cursor:pointer;
+font-weight:600;
+transition:0.3s;
+}
+
+button:hover{
+transform:translateY(-2px);
+box-shadow:0 8px 20px rgba(14,165,233,0.4);
+}
+
+.total{
+margin-top:15px;
+color:#22c55e;
+font-weight:bold;
+font-size:18px;
+}
+
+.remove-btn{
+background:#8509f1;
+border:none;
+padding:6px 10px;
+border-radius:6px;
+cursor:pointer;
+color:white;
+float:right;
+font-size:12px;
+width:auto;
+margin-top:0;
+}
+
+.item-box{
+background:#020617;
+padding:12px;
+margin-bottom:12px;
+border-radius:8px;
+border:1px solid #1e293b;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">AUTOORBIT.TECH</div>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="web-development.html">Web Dev</a>
+<a href="ai-automation.html">AI Automation</a>
+<a href="order.html">Order</a>
+<a href="aboutus.html">About</a>
+<a href="contact.html">Contact</a>
+</nav>
+</header>
+
+<h2>AUTOORBIT Checkout</h2>
+
+<div class="container">
+
+<div id="cartItems"></div>
+<div id="cartTotal" class="total"></div>
+
+<input type="text" id="coupon" placeholder="Enter Coupon Code">
+<button onclick="applyCoupon()">Apply Coupon</button>
+
+<input type="text" id="customerName" placeholder="Your Name">
+<input type="text" id="customerPhone" placeholder="Your Phone Number">
+
+<button onclick="payNow()">Pay Now</button>
+
+</div>
+
+<script>
+
+const ADMIN_PHONE="919416693052";
+
+/* COUPON SYSTEM */
+
+const COUPONS={
+"AUTO10":10,
+"AUTO20":20,
+"FLAT500":500
+};
+
+let cart=JSON.parse(localStorage.getItem("cart"))||[];
+let discountAmount=0;
+
+
+/* ORDER ID */
+
+function generateOrderID(){
+let date=Date.now().toString().slice(-6);
+let random=Math.floor(Math.random()*900+100);
+return "AUTO-"+date+random;
+}
+
+
+/* REMOVE ITEM */
+
+function removeItem(index){
+cart.splice(index,1);
+localStorage.setItem("cart",JSON.stringify(cart));
+loadCart();
+}
+
+
+/* LOAD CART */
+
+function loadCart(){
+
+let html="";
+let total=0;
+
+if(cart.length===0){
+document.getElementById("cartItems").innerHTML="Cart Empty";
+document.getElementById("cartTotal").innerHTML="";
+return;
+}
+
+cart.forEach((item,index)=>{
+
+html+=`
+<div class="item-box">
+${item.name} - ₹${item.price}
+<button class="remove-btn" onclick="removeItem(${index})">Remove</button>
+</div>
+`;
+
+total+=parseInt(item.price);
+
+});
+
+document.getElementById("cartItems").innerHTML=html;
+
+updateTotal(total);
+
+}
+
+
+/* UPDATE TOTAL */
+
+function updateTotal(total){
+let final=total-discountAmount;
+if(final<0) final=0;
+document.getElementById("cartTotal").innerHTML="Total: ₹"+final;
+}
+
+
+/* APPLY COUPON */
+
+function applyCoupon(){
+
+let code=document.getElementById("coupon").value.trim().toUpperCase();
+
+let total=0;
+
+cart.forEach(i=>total+=parseInt(i.price));
+
+if(COUPONS[code]!==undefined){
+
+if(code.startsWith("FLAT")){
+discountAmount=COUPONS[code];
+}else{
+discountAmount=(total*COUPONS[code])/100;
+}
+
+alert("Coupon Applied!");
+
+}else{
+
+discountAmount=0;
+alert("Invalid Coupon");
+
+}
+
+updateTotal(total);
+
+}
+
+
+/* CALCULATE TOTAL */
+
+function calculateTotal(){
+let t=0;
+cart.forEach(i=>t+=parseInt(i.price));
+let final=t-discountAmount;
+if(final<0) final=0;
+return final;
+}
+
+
+/* PAYMENT */
+
+function payNow(){
+
+if(cart.length===0){
+alert("Cart empty");
+return;
+}
+
+let name=document.getElementById("customerName").value;
+let phone=document.getElementById("customerPhone").value;
+
+if(name==""||phone==""){
+alert("Enter details");
+return;
+}
+
+let total=calculateTotal();
+
+let orderID=generateOrderID();
+
+var options={
+
+"key":"YOUR_RAZORPAY_KEY_ID",
+
+"amount":total*100,
+
+"currency":"INR",
+
+"name":"AUTOORBIT TECH",
+
+"description":"Service Payment",
+
+"handler":function(response){
+
+let message="💰 PAYMENT SUCCESSFUL\n\n";
+
+message+="Order ID: "+orderID+"\n\n";
+
+message+="Customer: "+name+"\n";
+
+message+="Phone: "+phone+"\n\n";
+
+cart.forEach((item,index)=>{
+message+=(index+1)+". "+item.name+" - ₹"+item.price+"\n";
+});
+
+message+="\nDiscount: ₹"+discountAmount;
+
+message+="\nFinal Paid: ₹"+total;
+
+message+="\nPayment ID: "+response.razorpay_payment_id;
+
+
+/* GOOGLE SHEET SAVE */
+
+fetch("https://script.google.com/macros/s/AKfycbxLYKH15F0SGSiYy21pAR1QkG8FOVV6hM-9A7qEmzF5nUJfDqYZuft6F-3up_cz9WWh/exec",{
+
+method:"POST",
+
+body:JSON.stringify({
+
+type:"order",
+
+name:name,
+
+phone:phone,
+
+service:cart.map(i=>i.name).join(", "),
+
+amount:total,
+
+payment:response.razorpay_payment_id
+
+})
+
+});
+
+
+/* WHATSAPP MESSAGE */
+
+window.open(
+"https://wa.me/"+ADMIN_PHONE+"?text="+encodeURIComponent(message),
+"_blank"
+);
+
+
+/* CLEAR CART */
+
+localStorage.removeItem("cart");
+
+/* REDIRECT */
+
+window.location.href="invoice.html";
+
+},
+
+"modal":{
+"ondismiss":function(){
+alert("Payment Cancelled");
+}
+}
+
+};
+
+var rzp=new Razorpay(options);
+
+rzp.open();
+
+}
+
+loadCart();
+
+</script>
+
+</body>
+</html>
+```
