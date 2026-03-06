@@ -1,0 +1,86 @@
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+font-family:'Inter',sans-serif;
+background:#0a0f1c;
+color:#fff;
+overflow-x:hidden;
+line-height:1.6;
+}
+body::before{
+content:"";position:fixed;top:-200px;left:-200px;
+width:600px;height:600px;
+background:radial-gradient(circle,#2563eb55,transparent 70%);
+z-index:-1;
+}
+body::after{
+content:"";position:fixed;bottom:-200px;right:-200px;
+width:600px;height:600px;
+background:radial-gradient(circle,#9333ea55,transparent 70%);
+z-index:-1;
+}
+header{
+position:fixed;top:0;width:100%;
+padding:18px 8%;
+display:flex;justify-content:space-between;align-items:center;
+background:rgba(15,23,42,0.85);
+backdrop-filter:blur(14px);
+z-index:1000;
+}
+.logo{font-weight:800;font-size:20px;}
+nav a{color:#cbd5e1;text-decoration:none;margin-left:20px;transition:0.3s;font-size:14px;}
+nav a:hover{color:#3b82f6;}
+
+.hero{
+height:90vh;display:flex;flex-direction:column;
+justify-content:center;align-items:center;text-align:center;padding:0 10%;
+}
+.hero h1{
+font-size:52px;font-weight:800;
+background:linear-gradient(90deg,#3b82f6,#9333ea);
+-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.hero p{margin-top:20px;color:#94a3b8;font-size:18px;max-width:800px;}
+
+.btn{
+display:inline-block;margin-top:20px;padding:14px 30px;
+border-radius:40px;background:linear-gradient(90deg,#3b82f6,#9333ea);
+color:#fff;text-decoration:none;font-weight:600;
+transition:0.3s;cursor:pointer;border:none;
+}
+.btn:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(59,130,246,0.5);}
+
+section{padding:120px 8%;}
+.section-title{text-align:center;font-size:34px;margin-bottom:50px;}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.card{
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.1);
+padding:25px;border-radius:18px;
+transition:0.4s;
+}
+.card:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(0,0,0,0.6);}
+
+.price{font-size:20px;color:#3b82f6;margin-top:10px;font-weight:700;}
+
+.long-text{max-width:900px;margin:auto;color:#cbd5e1;font-size:16px;}
+
+input,select,textarea{
+width:100%;padding:12px;margin:10px 0;border-radius:8px;border:none;
+}
+
+.total-box{margin-top:10px;font-size:18px;font-weight:600;color:#3b82f6;}
+
+.faq-item{margin-bottom:15px;background:rgba(255,255,255,0.05);padding:20px;border-radius:10px;}
+
+footer{
+padding:40px;text-align:center;background:#0f172a;color:#94a3b8;margin-top:60px;
+font-size:14px;
+}
