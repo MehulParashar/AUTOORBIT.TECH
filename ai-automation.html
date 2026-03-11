@@ -1,15 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AI Automation | AUTOORBIT</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 <script src="js/script.js"></script>
+<style>
+/* LOADER */
+#loader{position:fixed;width:100%;height:100%;background:#020617;display:flex;justify-content:center;align-items:center;z-index:99999;flex-direction:column;transition:.6s;}
+.loader-logo{font-size:32px;font-weight:800;background:linear-gradient(135deg,#7c3aed,#06b6d4);-webkit-background-clip:text;color:transparent;margin-bottom:20px;}
+.spinner{width:50px;height:50px;border:4px solid rgba(255,255,255,.1);border-top:4px solid #7c3aed;border-radius:50%;animation:spin 1s linear infinite;margin-bottom:15px;}
+@keyframes spin{0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
+.menu-btn{display:none;font-size:26px;cursor:pointer;}
+@media(max-width:700px){
+.menu-btn{display:block;}
+nav{display:none;flex-direction:column;position:absolute;top:70px;left:0;width:100%;background:#020617;padding:20px;text-align:center;}
+nav.active{display:flex;}
+}
+</style>
 </head>
 <body>
 
+<!-- LOADING SCREEN -->
+<div id="loader">
+<div class="loader-content">
+<h1 class="loader-logo">AUTOORBIT</h1>
+<div class="spinner"></div>
+<p>Loading Systems...</p>
+</div>
+</div>
+
+
 <header>
 <div class="logo">AUTOORBIT.TECH</div>
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
 <nav>
 <a href="index.html">Home</a>
 <a href="web-development.html">Web Dev</a>
@@ -17,8 +42,10 @@
 <a href="order.html">Order</a>
 <a href="aboutus.html">About</a>
 <a href="contact.html">Contact</a>
+<a href="order.html">Cart
+(<span id="cart-count">0</span>)</a>
 <a href="#" onclick="sendCartToWhatsApp()">
-Cart (<span id="cart-count">0</span>)
+
 </a>
 </nav>
 </header>
@@ -102,6 +129,15 @@ Cart (<span id="cart-count">0</span>)
 
 </div>
 </footer>
+
+
+<script>
+function toggleMenu(){var n=document.querySelector("nav"); if(n){n.classList.toggle("active");}}
+window.addEventListener("load",function(){
+var l=document.getElementById("loader");
+if(l){l.style.opacity="0"; setTimeout(()=>{l.style.display="none";},600);}
+});
+</script>
 
 </body>
 </html>
